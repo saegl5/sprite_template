@@ -13,12 +13,17 @@ pygame.key.set_repeat(10) # 10 millisecond delay
 player_frames = pygame.image.load('images/female_tilesheet.png').convert_alpha()
 W = player_frames.get_width()/9 # tile sheet has nine columns
 H = player_frames.get_height()/3 # tile sheet has three rows
-frame = (W*5, H*2, W, H) # tile in row 6 column 3 for standing
+frame = [ (W*5, H*2, W, H), # standing
+          (W*0, H*1, W, H), # walk1
+          (W*1, H*1, W, H), # walk2
+          (W*5, H*0, W, H), # climb1
+          (W*6, H*0, W, H), # climb2
+          (W*1, H*0, W, H) ] # jump
 V = 5 # example
 x_inc, y_inc = 0, 0
 
 player = Rect(W, H)
-player.image.blit(player_frames, (0, 0), frame) 
+player.image.blit(player_frames, (0, 0), frame[0]) 
 player.rect.x = canvas.SIZE[0]/2 - W/2 # centering
 player.rect.y = canvas.SIZE[1]/2 - H/2
 sprites = pygame.sprite.Group()
