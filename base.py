@@ -6,6 +6,7 @@ import pygame
 import src.canvas as canvas # manages and decorates screen
 from custom.classes import Rect # constructs sprites
 from custom.functions import time_stamp, save_energy # saves energy
+from custom.functions import reframe # changes player frame
 
 pygame.display.set_caption("Sprite")
 pygame.key.set_repeat(10) # 10 millisecond delay
@@ -31,11 +32,6 @@ player.rect.y = canvas.SIZE[1]/2 - H/2
 sprites = pygame.sprite.Group()
 sprites.add(player)
 
-def reframe(self, n, flip):
-    self.image.fill(pygame.Color(canvas.BLUE))
-    self.image.blit(player_frames, (0, 0), frame[n])
-    self.image = pygame.transform.flip(self.image, flip_x=flip, flip_y=False)
-
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -46,46 +42,46 @@ while True:
                 flip = True
                 count += 1
                 if count % 20 == 0:
-                    reframe(player, 1, flip)
+                    reframe(player, player_frames, frame, 1, flip)
                 elif count % 10 == 0:
-                    reframe(player, 2, flip)
+                    reframe(player, player_frames, frame, 2, flip)
                 elif count == 5:
-                    reframe(player, 1, flip)
+                    reframe(player, player_frames, frame, 1, flip)
             elif event.key == pygame.K_RIGHT:
                 x_inc = V
                 flip = False
                 count += 1
                 if count % 20 == 0:
-                    reframe(player, 1, flip)
+                    reframe(player, player_frames, frame, 1, flip)
                 elif count % 10 == 0:
-                    reframe(player, 2, flip)
+                    reframe(player, player_frames, frame, 2, flip)
                 elif count == 5:
-                    reframe(player, 1, flip)
+                    reframe(player, player_frames, frame, 1, flip)
             elif event.key == pygame.K_UP:
                 y_inc = -V
                 count += 1
                 if count % 20 == 0:
-                    reframe(player, 3, flip)
+                    reframe(player, player_frames, frame, 3, flip)
                 elif count % 10 == 0:
-                    reframe(player, 4, flip)
+                    reframe(player, player_frames, frame, 4, flip)
                 elif count == 5:
-                    reframe(player, 3, flip)
+                    reframe(player, player_frames, frame, 3, flip)
             elif event.key == pygame.K_DOWN:
                 y_inc = V
                 count += 1
                 if count % 20 == 0:
-                    reframe(player, 3, flip)
+                    reframe(player, player_frames, frame, 3, flip)
                 elif count % 10 == 0:
-                    reframe(player, 4, flip)
+                    reframe(player, player_frames, frame, 4, flip)
                 elif count == 5:
-                    reframe(player, 3, flip)
+                    reframe(player, player_frames, frame, 3, flip)
             elif event.key == pygame.K_SPACE:
                 y_inc = -V
-                reframe(player, 5, flip)
+                reframe(player, player_frames, frame, 5, flip)
         elif event.type == pygame.KEYUP:
             x_inc, y_inc = 0, 0
             count = 0
-            reframe(player, 0, flip)
+            reframe(player, player_frames, frame, 0, flip)
 
         time_stamp(event) # takes, if player is idling
 
