@@ -13,7 +13,7 @@ pygame.key.set_repeat(10) # 10 millisecond delay
 player_frames = pygame.image.load('images/female_tilesheet.png').convert_alpha()
 W = player_frames.get_width()/9 # tile sheet has nine columns
 H = player_frames.get_height()/3 # tile sheet has three rows
-frame = [ (W*5, H*2, W, H), # standing
+frame = [ (W*5, H*2, W, H), # stand
           (W*0, H*1, W, H), # walk1
           (W*1, H*1, W, H), # walk2
           (W*5, H*0, W, H), # climb1
