@@ -31,6 +31,11 @@ player.rect.y = canvas.SIZE[1]/2 - H/2
 sprites = pygame.sprite.Group()
 sprites.add(player)
 
+def reframe(self, n, flip):
+    self.image.fill(pygame.Color(canvas.BLUE))
+    self.image.blit(player_frames, (0, 0), frame[n])
+    self.image = pygame.transform.flip(self.image, flip_x=flip, flip_y=False)
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -41,52 +46,34 @@ while True:
                 flip = True
                 count += 1
                 if count % 20 == 0:
-                    player.image.fill(pygame.Color(canvas.BLUE))
-                    player.image.blit(player_frames, (0, 0), frame[1])
-                    player.image = pygame.transform.flip(player.image, flip_x=flip, flip_y=False)
+                    reframe(player, 1, flip)
                 elif count % 10 == 0:
-                    player.image.fill(pygame.Color(canvas.BLUE))
-                    player.image.blit(player_frames, (0, 0), frame[2])
-                    player.image = pygame.transform.flip(player.image, flip_x=flip, flip_y=False)
+                    reframe(player, 2, flip)
             elif event.key == pygame.K_RIGHT:
                 x_inc = V
                 flip = False
                 count += 1
                 if count % 20 == 0:
-                    player.image.fill(pygame.Color(canvas.BLUE))
-                    player.image.blit(player_frames, (0, 0), frame[1])
-                    player.image = pygame.transform.flip(player.image, flip_x=flip, flip_y=False)
+                    reframe(player, 1, flip)
                 elif count % 10 == 0:
-                    player.image.fill(pygame.Color(canvas.BLUE))
-                    player.image.blit(player_frames, (0, 0), frame[2])
-                    player.image = pygame.transform.flip(player.image, flip_x=flip, flip_y=False)
+                    reframe(player, 2, flip)
             elif event.key == pygame.K_UP:
                 y_inc = -V
                 count += 1
                 if count % 20 == 0:
-                    player.image.fill(pygame.Color(canvas.BLUE))
-                    player.image.blit(player_frames, (0, 0), frame[3])
-                    player.image = pygame.transform.flip(player.image, flip_x=flip, flip_y=False)
+                    reframe(player, 3, flip)
                 elif count % 10 == 0:
-                    player.image.fill(pygame.Color(canvas.BLUE))
-                    player.image.blit(player_frames, (0, 0), frame[4])
-                    player.image = pygame.transform.flip(player.image, flip_x=flip, flip_y=False)
+                    reframe(player, 4, flip)
             elif event.key == pygame.K_DOWN:
                 y_inc = V
                 count += 1
                 if count % 20 == 0:
-                    player.image.fill(pygame.Color(canvas.BLUE))
-                    player.image.blit(player_frames, (0, 0), frame[3])
-                    player.image = pygame.transform.flip(player.image, flip_x=flip, flip_y=False)
+                    reframe(player, 3, flip)
                 elif count % 10 == 0:
-                    player.image.fill(pygame.Color(canvas.BLUE))
-                    player.image.blit(player_frames, (0, 0), frame[4])
-                    player.image = pygame.transform.flip(player.image, flip_x=flip, flip_y=False)
+                    reframe(player, 4, flip)
             elif event.key == pygame.K_SPACE:
                 y_inc = -V
-                player.image.fill(pygame.Color(canvas.BLUE))
-                player.image.blit(player_frames, (0, 0), frame[5])
-                player.image = pygame.transform.flip(player.image, flip_x=flip, flip_y=False)
+                reframe(player, 5, flip)
         elif event.type == pygame.KEYUP:
             x_inc, y_inc = 0, 0
 
