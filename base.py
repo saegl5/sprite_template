@@ -77,6 +77,7 @@ while True:
         elif event.type == pygame.KEYUP:
             x_inc, y_inc = 0, 0
             count = 0
+            reframe(player, 0, flip)
 
         time_stamp(event) # takes, if player is idling
 
