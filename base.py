@@ -49,6 +49,8 @@ while True:
                     reframe(player, 1, flip)
                 elif count % 10 == 0:
                     reframe(player, 2, flip)
+                elif count == 5:
+                    reframe(player, 1, flip)
             elif event.key == pygame.K_RIGHT:
                 x_inc = V
                 flip = False
@@ -57,6 +59,8 @@ while True:
                     reframe(player, 1, flip)
                 elif count % 10 == 0:
                     reframe(player, 2, flip)
+                elif count == 5:
+                    reframe(player, 1, flip)
             elif event.key == pygame.K_UP:
                 y_inc = -V
                 count += 1
@@ -64,6 +68,8 @@ while True:
                     reframe(player, 3, flip)
                 elif count % 10 == 0:
                     reframe(player, 4, flip)
+                elif count == 5:
+                    reframe(player, 3, flip)
             elif event.key == pygame.K_DOWN:
                 y_inc = V
                 count += 1
@@ -71,6 +77,8 @@ while True:
                     reframe(player, 3, flip)
                 elif count % 10 == 0:
                     reframe(player, 4, flip)
+                elif count == 5:
+                    reframe(player, 3, flip)
             elif event.key == pygame.K_SPACE:
                 y_inc = -V
                 reframe(player, 5, flip)
