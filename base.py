@@ -21,6 +21,7 @@ frame = [ (W*5, H*2, W, H), # standing
           (W*1, H*0, W, H) ] # jump
 V = 5 # example
 x_inc, y_inc = 0, 0
+count = 0 # player walk or climb
 
 player = Rect(W, H)
 player.image.blit(player_frames, (0, 0), frame[0]) 
@@ -38,6 +39,13 @@ while True:
                 x_inc = -V
             elif event.key == pygame.K_RIGHT:
                 x_inc = V
+                count += 1
+                if count % 20 == 0:
+                    player.image.fill(pygame.Color(canvas.BLUE))
+                    player.image.blit(player_frames, (0, 0), frame[1])
+                elif count % 10 == 0:
+                    player.image.fill(pygame.Color(canvas.BLUE))
+                    player.image.blit(player_frames, (0, 0), frame[2])
             elif event.key == pygame.K_UP or event.key == pygame.K_SPACE:
                 y_inc = -V
             elif event.key == pygame.K_DOWN:
