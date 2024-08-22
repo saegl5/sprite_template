@@ -60,7 +60,7 @@ while True:
                     player.image.fill(pygame.Color(canvas.BLUE))
                     player.image.blit(player_frames, (0, 0), frame[2])
                     player.image = pygame.transform.flip(player.image, flip_x=flip, flip_y=False)
-            elif event.key == pygame.K_UP or event.key == pygame.K_SPACE:
+            elif event.key == pygame.K_UP:
                 y_inc = -V
                 count += 1
                 if count % 20 == 0:
@@ -82,6 +82,11 @@ while True:
                     player.image.fill(pygame.Color(canvas.BLUE))
                     player.image.blit(player_frames, (0, 0), frame[4])
                     player.image = pygame.transform.flip(player.image, flip_x=flip, flip_y=False)
+            elif event.key == pygame.K_SPACE:
+                y_inc = -V
+                player.image.fill(pygame.Color(canvas.BLUE))
+                player.image.blit(player_frames, (0, 0), frame[5])
+                player.image = pygame.transform.flip(player.image, flip_x=flip, flip_y=False)
         elif event.type == pygame.KEYUP:
             x_inc, y_inc = 0, 0
 
