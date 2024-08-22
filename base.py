@@ -10,15 +10,17 @@ from custom.functions import time_stamp, save_energy # saves energy
 pygame.display.set_caption("Sprite")
 pygame.key.set_repeat(10) # 10 millisecond delay
 
-WHITE = pygame.Color("white") # optional color
-W, H = 64, 64
-V = 10 # example
+player_frames = pygame.image.load('images/female_tilesheet.png').convert_alpha()
+W = player_frames.get_width()/9 # tile sheet has nine columns
+H = player_frames.get_height()/3 # tile sheet has three rows
+frame = (W*5, H*2, W, H) # tile in row 6 column 3 for standing
+V = 5 # example
 x_inc, y_inc = 0, 0
 
 player = Rect(W, H)
+player.image.blit(player_frames, (0, 0), frame) 
 player.rect.x = canvas.SIZE[0]/2 - W/2 # centering
 player.rect.y = canvas.SIZE[1]/2 - H/2
-player.image.fill(WHITE)
 sprites = pygame.sprite.Group()
 sprites.add(player)
 
