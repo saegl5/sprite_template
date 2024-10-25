@@ -1,5 +1,7 @@
 # Sprite Template
 
+Python script for creating a sprite. It is a starter for Python game development, based on what I learned from teaching computer science for a couple years.
+
 <img src="screenshots/sprite_keyboard_input.gif" alt="screenshot of canvas" width="800">
 
 ## Requirements
